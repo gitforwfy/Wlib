@@ -10,7 +10,9 @@ import com.wfy.test.activity.DBActivity;
 import com.wfy.test.activity.EventActivity;
 import com.wfy.test.activity.HttpActivity;
 import com.wfy.test.activity.ImageLoaderActivity;
+import com.wfy.test.activity.ZipActivity;
 import com.wuzhou.wlibrary.page.BaseActivity;
+import com.wuzhou.wlibrary.page.CaptureActivity;
 
 public class MainActivity extends BaseActivity implements AdapterView.OnItemClickListener {
 
@@ -40,6 +42,14 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 break;
             case 3:
                 intent.setClass(this, HttpActivity.class);
+                startActivity(intent);
+                break;
+            case 4:
+                intent.setClass(this, ZipActivity.class);
+                startActivity(intent);
+                break;
+            case 5:
+                intent.setClass(this, CaptureActivity.class);
                 startActivity(intent);
                 break;
         }

@@ -8,7 +8,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.wuzhou.xlibrary.R;
+import com.wuzhou.wlibrary.R;
 
 /**
  * 常规title继承，特殊的继承base自己定义

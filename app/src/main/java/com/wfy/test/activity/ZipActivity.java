@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.wfy.test.R;
 
-public class ZipActivityActivity extends AppCompatActivity {
+public class ZipActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import com.wuzhou.xlibrary.R;
+import com.wuzhou.wlibrary.R;
 
 public class BaseActivity extends AppCompatActivity {
     protected String TAG=this.getClass().getSimpleName();
