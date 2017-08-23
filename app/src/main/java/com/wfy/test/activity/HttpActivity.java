@@ -7,19 +7,20 @@ import android.widget.TextView;
 import com.wfy.test.R;
 import com.wfy.test.net.WeatherService;
 import com.wuzhou.wlibrary.http.RetrofitServiceManager;
-import com.wuzhou.wlibrary.page.BaseActivity;
+import com.wuzhou.wlibrary.page.TitleActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HttpActivity extends BaseActivity {
+public class HttpActivity extends TitleActivity {
     private TextView tv_http;
     private WeatherService weatherService;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_http);
+        setTitle("网络请求示例");
         tv_http= (TextView) findViewById(R.id.tv_http);
         weatherService =RetrofitServiceManager.getInstance().create(WeatherService.class);
 

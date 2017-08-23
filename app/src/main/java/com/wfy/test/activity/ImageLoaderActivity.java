@@ -14,11 +14,11 @@ import android.widget.ListView;
 
 import com.wfy.test.R;
 import com.wuzhou.wlibrary.imageloader.Image;
-import com.wuzhou.wlibrary.page.BaseActivity;
+import com.wuzhou.wlibrary.page.TitleActivity;
 
 import java.util.LinkedList;
 
-public class ImageLoaderActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
+public class ImageLoaderActivity extends TitleActivity implements SwipeRefreshLayout.OnRefreshListener {
     private int page_size=8;
     private SwipeRefreshLayout swp;
     private ListView lv;
@@ -29,6 +29,7 @@ public class ImageLoaderActivity extends BaseActivity implements SwipeRefreshLay
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_loader);
+        setTitle("图片缓存示例");
         lv= (ListView) findViewById(R.id.lv);
         swp= (SwipeRefreshLayout) findViewById(R.id.swp);
         swp.setOnRefreshListener(this);

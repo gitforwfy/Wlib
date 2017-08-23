@@ -19,13 +19,13 @@ import android.widget.Toast;
 import com.wfy.test.R;
 import com.wfy.test.bean.Worker;
 import com.wfy.test.db.WorkDao;
-import com.wuzhou.wlibrary.page.BaseActivity;
+import com.wuzhou.wlibrary.page.TitleActivity;
 import com.wuzhou.wlibrary.utils.WLog;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DBActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
+public class DBActivity extends TitleActivity implements SwipeRefreshLayout.OnRefreshListener {
     WorkDao dao;
     EditText etv_query;
     EditText etv_jobNum;
@@ -37,6 +37,7 @@ public class DBActivity extends BaseActivity implements SwipeRefreshLayout.OnRef
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_db);
+        setTitle("数据库示例");
         etv_query = (EditText) findViewById(R.id.etv_query);
         etv_jobNum = (EditText) findViewById(R.id.etv_jobNum);
         etv_name= (EditText) findViewById(R.id.etv_name);

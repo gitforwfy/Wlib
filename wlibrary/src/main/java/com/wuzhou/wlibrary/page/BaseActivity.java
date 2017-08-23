@@ -12,8 +12,6 @@ import com.wuzhou.xlibrary.R;
 public class BaseActivity extends AppCompatActivity {
     protected String TAG=this.getClass().getSimpleName();
     protected Activity mActivity;
-    protected String user_id;
-
     public FrameLayout f_content;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

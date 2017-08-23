@@ -8,17 +8,18 @@ import com.wfy.test.R;
 import com.wfy.test.event.Cat;
 import com.wuzhou.wlibrary.event.EventManager;
 import com.wuzhou.wlibrary.event.MessageEvent;
-import com.wuzhou.wlibrary.page.BaseActivity;
+import com.wuzhou.wlibrary.page.TitleActivity;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-public class EventActivity extends BaseActivity {
+public class EventActivity extends TitleActivity {
     private TextView tv_num;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event);
+        setTitle("event示例");
         tv_num= (TextView) findViewById(R.id.tv_num);
     }
 

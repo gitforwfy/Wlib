@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 import com.wuzhou.xlibrary.R;
 
+/**
+ * 常规title继承，特殊的继承base自己定义
+ */
 public class TitleActivity extends BaseActivity {
     protected Toolbar toolbar;
     protected FrameLayout t_content;
@@ -25,7 +28,8 @@ public class TitleActivity extends BaseActivity {
         imv_back= (ImageView) findViewById(R.id.imv_back);
         tv_title= (TextView) findViewById(R.id.tv_title);
         imv_right= (ImageView) findViewById(R.id.imv_right);
-        showBack(true);
+        showBack(false);
+        showTitleRight(false);
         imv_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
