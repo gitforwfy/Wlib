@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,6 +41,24 @@ public class DBActivity extends BaseActivity implements SwipeRefreshLayout.OnRef
         swp_worker= (SwipeRefreshLayout) findViewById(R.id.swp_worker);
         swp_worker.setOnRefreshListener(this);
         lv_worker= (ListView) findViewById(R.id.lv_worker);
+        lv_worker.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView absListView, int i) {
+                if (i == AbsListView.OnScrollListener.SCROLL_STATE_IDLE) {
+                    // 判断是否滚动到底部
+                    if (absListView.getLastVisiblePosition() == absListView.getCount() - 1) {
+                        //加载更多功能的代码
+                        page_index++;
+                        get(page_index);
+                    }
+                }
+            }
+
+            @Override
+            public void onScroll(AbsListView absListView, int i, int i1, int i2) {
+
+            }
+        });
         adapter=new MyAdapter(this);
         lv_worker.setAdapter(adapter);
 
@@ -65,20 +84,19 @@ public class DBActivity extends BaseActivity implements SwipeRefreshLayout.OnRef
 
     int page_index=1;
     public void query(View view) {
-        page_index=1;
+       onRefresh();
+    }
+
+    private void get(int page){
         String query=etv_query.getText().toString().trim();
         List<Worker> temp;
         if(TextUtils.equals(query,"")){
-            temp= dao.queryAll(page_index,8);
+            temp= dao.queryAll(page,8);
         }else{
-            temp= dao.queryAll(page_index,8,"jobNum",Long.parseLong(query));
+            temp= dao.queryAll(page,8,"jobNum",Long.parseLong(query));
         }
         list.addAll(temp);
         adapter.notifyDataSetChanged();
-    }
-
-    private void get(int page,String query){
-
     }
 
     List<Worker> list=new ArrayList<>();
