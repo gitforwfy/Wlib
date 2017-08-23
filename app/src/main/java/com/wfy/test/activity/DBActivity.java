@@ -1,6 +1,7 @@
 package com.wfy.test.activity;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.TextUtils;
@@ -49,7 +50,9 @@ public class DBActivity extends BaseActivity implements SwipeRefreshLayout.OnRef
                     if (absListView.getLastVisiblePosition() == absListView.getCount() - 1) {
                         //加载更多功能的代码
                         page_index++;
-                        get(page_index);
+                        String q_case=etv_query.getText().toString().trim();
+                        LoadTask loadTask=new LoadTask();
+                        loadTask.execute(new String[]{q_case,page_index+""});
                     }
                 }
             }
@@ -84,35 +87,51 @@ public class DBActivity extends BaseActivity implements SwipeRefreshLayout.OnRef
 
     int page_index=1;
     public void query(View view) {
-       onRefresh();
-    }
-
-    private void get(int page){
-        String query=etv_query.getText().toString().trim();
-        List<Worker> temp;
-        if(TextUtils.equals(query,"")){
-            temp= dao.queryAll(page,8);
-        }else{
-            temp= dao.queryAll(page,8,"jobNum",Long.parseLong(query));
-        }
-        list.addAll(temp);
-        adapter.notifyDataSetChanged();
+        String q_case=etv_query.getText().toString().trim();
+        LoadTask loadTask=new LoadTask();
+        loadTask.execute(new String[]{q_case,1+""});
     }
 
     List<Worker> list=new ArrayList<>();
 
     @Override
     public void onRefresh() {
-        String query=etv_query.getText().toString().trim();
-        List<Worker> temp;
-        if(TextUtils.equals(query,"")){
-            temp= dao.queryAll(1,8);
-        }else{
-            temp= dao.queryAll(1,8,"jobNum",Long.parseLong(query));
-        }
-        list.addAll(temp);
-        adapter.notifyDataSetChanged();
+        String q_case=etv_query.getText().toString().trim();
+        LoadTask loadTask=new LoadTask();
+        loadTask.execute(new String[]{q_case,1+""});
     }
+
+
+    class LoadTask extends AsyncTask<String,Integer,String>{
+        long page_size=8;
+        @Override
+        protected String doInBackground(String... integers) {
+            String q_case=integers[0];
+            int page_index=Integer.parseInt(integers[1]);
+            List<Worker> temp;
+            if(TextUtils.equals(q_case,"")){
+                temp= dao.queryAll(page_index,page_size);
+            }else{
+                temp= dao.queryAll(page_index,page_size,"jobNum",Long.parseLong(q_case));
+            }
+
+            for(Worker worker:temp){
+                if(list.contains(temp)){
+                    list.remove(temp);
+                }
+                list.addAll(temp);
+            }
+            return "ok";
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            adapter.notifyDataSetChanged();
+            swp_worker.setRefreshing(false);
+        }
+    }
+
 
     class MyAdapter extends BaseAdapter{
         Context context;
@@ -146,6 +165,7 @@ public class DBActivity extends BaseActivity implements SwipeRefreshLayout.OnRef
                 holder.tv_name= (TextView) view.findViewById(R.id.tv_name);
                 holder.tv_profession= (TextView) view.findViewById(R.id.tv_profession);
                 holder.btn_op= (Button) view.findViewById(R.id.btn_op);
+                view.setTag(holder);
             }else{
                 holder= (ViewHolder) view.getTag();
             }
