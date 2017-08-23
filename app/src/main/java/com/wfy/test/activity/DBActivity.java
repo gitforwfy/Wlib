@@ -20,6 +20,7 @@ import com.wfy.test.R;
 import com.wfy.test.bean.Worker;
 import com.wfy.test.db.WorkDao;
 import com.wuzhou.wlibrary.page.BaseActivity;
+import com.wuzhou.wlibrary.utils.WLog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +50,7 @@ public class DBActivity extends BaseActivity implements SwipeRefreshLayout.OnRef
                     // 判断是否滚动到底部
                     if (absListView.getLastVisiblePosition() == absListView.getCount() - 1) {
                         //加载更多功能的代码
+                        WLog.print("加载更多功能的代码");
                         page_index++;
                         String q_case=etv_query.getText().toString().trim();
                         LoadTask loadTask=new LoadTask();
@@ -85,8 +87,10 @@ public class DBActivity extends BaseActivity implements SwipeRefreshLayout.OnRef
         }
     }
 
-    int page_index=1;
+    int page_index=0;
     public void query(View view) {
+        page_index=0;
+        list.clear();
         String q_case=etv_query.getText().toString().trim();
         LoadTask loadTask=new LoadTask();
         loadTask.execute(new String[]{q_case,1+""});
@@ -110,16 +114,15 @@ public class DBActivity extends BaseActivity implements SwipeRefreshLayout.OnRef
             int page_index=Integer.parseInt(integers[1]);
             List<Worker> temp;
             if(TextUtils.equals(q_case,"")){
-                temp= dao.queryAll(page_index,page_size);
+                temp= dao.queryAll((page_index-1)*page_size,page_size);
             }else{
-                temp= dao.queryAll(page_index,page_size,"jobNum",Long.parseLong(q_case));
+                temp= dao.queryAll((page_index-1)*page_size,page_size,"jobNum",Long.parseLong(q_case));
             }
 
             for(Worker worker:temp){
-                if(list.contains(temp)){
-                    list.remove(temp);
+                if(!list.contains(worker)){
+                    list.add(worker);
                 }
-                list.addAll(temp);
             }
             return "ok";
         }
