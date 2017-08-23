@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="main">
+        <item>ImageLoader</item>
+        <item>EventBus</item>
+        <item>DB</item>
+        <item>http</item>
+    </string-array>
+
+</resources>
