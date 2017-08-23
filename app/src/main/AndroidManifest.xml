@@ -45,6 +45,7 @@
         <activity android:name=".activity.EventActivity" />
         <activity android:name=".activity.DBActivity" />
         <activity android:name=".activity.HttpActivity" />
+        <activity android:name=".activity.ZipActivityActivity"></activity>
     </application>
 
 </manifest>
