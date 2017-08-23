@@ -2,12 +2,10 @@ package com.wuzhou.wlibrary.page;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 
 import com.wuzhou.xlibrary.R;
 
 public class BaseActivity extends AppCompatActivity {
-    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
