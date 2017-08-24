@@ -30,7 +30,7 @@
         <activity android:name="com.wuzhou.wlibrary.page.BaseActivity" />
         <activity android:name="com.wuzhou.wlibrary.page.BaseFragmentActivity" />
         <activity android:name="com.wuzhou.wlibrary.page.TitleActivity" />
-        <activity android:name="com.wuzhou.wlibrary.page.CaptureActivity" />
+        <activity android:name="com.wuzhou.wlibrary.zxing.CaptureActivity" />
     </application>
 
 </manifest>

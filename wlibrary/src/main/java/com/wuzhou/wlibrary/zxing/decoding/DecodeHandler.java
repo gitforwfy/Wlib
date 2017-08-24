@@ -28,7 +28,7 @@ import com.google.zxing.MultiFormatReader;
 import com.google.zxing.ReaderException;
 import com.google.zxing.Result;
 import com.google.zxing.common.GlobalHistogramBinarizer;
-import com.wuzhou.wlibrary.page.CaptureActivity;
+import com.wuzhou.wlibrary.zxing.CaptureActivity;
 import com.wuzhou.wlibrary.zxing.IDs;
 import com.wuzhou.wlibrary.zxing.camera.CameraManager;
 import com.wuzhou.wlibrary.zxing.camera.PlanarYUVLuminanceSource;

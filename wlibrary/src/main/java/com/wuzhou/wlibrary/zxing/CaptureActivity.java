@@ -1,4 +1,4 @@
-package com.wuzhou.wlibrary.page;
+package com.wuzhou.wlibrary.zxing;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -20,21 +20,23 @@ import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
+import com.wuzhou.wlibrary.R;
+import com.wuzhou.wlibrary.page.BaseActivity;
 import com.wuzhou.wlibrary.zxing.camera.CameraManager;
 import com.wuzhou.wlibrary.zxing.decoding.CaptureActivityHandler;
 import com.wuzhou.wlibrary.zxing.decoding.InactivityTimer;
 import com.wuzhou.wlibrary.zxing.view.ViewfinderView;
-import com.wuzhou.wlibrary.R;
 
 import java.io.IOException;
 import java.util.Vector;
 
 /**
- * 扫一扫界面
+ * 扫二维码界面
  *
  * @author wfy
  */
 public class CaptureActivity extends BaseActivity implements SurfaceHolder.Callback,View.OnClickListener{
+    public final static int SCANNIN_REQUEST_CODE = 0x112;
     public static final String SCAN_RESULT = "scan_result";
     private CaptureActivityHandler handler;
     private ViewfinderView viewfinderView;

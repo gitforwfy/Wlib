@@ -27,7 +27,7 @@ import android.util.Log;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
-import com.wuzhou.wlibrary.page.CaptureActivity;
+import com.wuzhou.wlibrary.zxing.CaptureActivity;
 import com.wuzhou.wlibrary.zxing.IDs;
 import com.wuzhou.wlibrary.zxing.camera.CameraManager;
 import com.wuzhou.wlibrary.zxing.view.ViewfinderResultPointCallback;
