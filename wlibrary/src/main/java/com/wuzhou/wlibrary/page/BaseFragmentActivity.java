@@ -3,7 +3,7 @@ package com.wuzhou.wlibrary.page;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
-import com.wuzhou.xlibrary.R;
+import com.wuzhou.wlibrary.R;
 
 public class BaseFragmentActivity extends FragmentActivity {
 

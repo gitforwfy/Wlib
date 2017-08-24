@@ -5,12 +5,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AbsListView;
-import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -19,6 +15,7 @@ import android.widget.Toast;
 import com.wfy.test.R;
 import com.wfy.test.bean.Worker;
 import com.wfy.test.db.WorkDao;
+import com.wuzhou.wlibrary.page.CommonAdapter;
 import com.wuzhou.wlibrary.page.TitleActivity;
 import com.wuzhou.wlibrary.utils.WLog;
 
@@ -32,7 +29,8 @@ public class DBActivity extends TitleActivity implements SwipeRefreshLayout.OnRe
     EditText etv_name;
     SwipeRefreshLayout swp_worker;
     ListView lv_worker;
-    MyAdapter adapter;
+//    MyAdapter adapter;
+    WorkAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,9 +63,8 @@ public class DBActivity extends TitleActivity implements SwipeRefreshLayout.OnRe
 
             }
         });
-        adapter=new MyAdapter(this);
+        adapter=new WorkAdapter(this,list,R.layout.item_worker);
         lv_worker.setAdapter(adapter);
-
         dao=new WorkDao(this);
     }
 
@@ -136,56 +133,16 @@ public class DBActivity extends TitleActivity implements SwipeRefreshLayout.OnRe
         }
     }
 
-
-    class MyAdapter extends BaseAdapter{
-        Context context;
-
-        public MyAdapter(Context context) {
-            this.context=context;
+    class WorkAdapter extends CommonAdapter<Worker>{
+        public WorkAdapter(Context context, List<Worker> datas, int layoutId) {
+            super(context, datas, layoutId);
         }
-
         @Override
-        public int getCount() {
-            return list.size();
+        public void convert(com.wuzhou.wlibrary.page.ViewHolder viewHolder, Worker worker, int position) {
+            TextView tv_jnum = viewHolder.getView(R.id.tv_jnum);
+            TextView tv_name = viewHolder.getView(R.id.tv_name);
+            tv_jnum.setText(worker.jobNum+"");
+            tv_name.setText(worker.name);
         }
-
-        @Override
-        public Object getItem(int i) {
-            return list.get(i);
-        }
-
-        @Override
-        public long getItemId(int i) {
-            return i;
-        }
-
-        @Override
-        public View getView(int i, View view, ViewGroup viewGroup) {
-            ViewHolder holder=null;
-            if(view==null){
-                view= LayoutInflater.from(context).inflate(R.layout.item_worker,null);
-                holder=new ViewHolder();
-                holder.tv_jnum= (TextView) view.findViewById(R.id.tv_jnum);
-                holder.tv_name= (TextView) view.findViewById(R.id.tv_name);
-                holder.tv_profession= (TextView) view.findViewById(R.id.tv_profession);
-                holder.btn_op= (Button) view.findViewById(R.id.btn_op);
-                view.setTag(holder);
-            }else{
-                holder= (ViewHolder) view.getTag();
-            }
-
-            Worker worker=list.get(i);
-            holder.tv_jnum.setText(worker.jobNum+"");
-            holder.tv_name.setText(worker.name);
-//            holder.tv_profession.setText(worker.profession.name);
-            return view;
-        }
-    }
-
-    class ViewHolder{
-        TextView tv_jnum;
-        TextView tv_name;
-        TextView tv_profession;
-        Button btn_op;
     }
 }

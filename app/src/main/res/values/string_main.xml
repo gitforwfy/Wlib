@@ -6,6 +6,8 @@
         <item>EventBus</item>
         <item>DB</item>
         <item>http</item>
+        <item>zip</item>
+        <item>二维码</item>
     </string-array>
 
 </resources>
