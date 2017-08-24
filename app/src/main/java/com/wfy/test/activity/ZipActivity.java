@@ -11,5 +11,6 @@ public class ZipActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zip_activity);
+        setTitle("下载解压示例");
     }
 }
