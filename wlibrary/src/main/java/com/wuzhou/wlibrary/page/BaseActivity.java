@@ -143,6 +143,7 @@ public class BaseActivity extends AppCompatActivity {
                 .setNegativeButton("取消", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+
                     }
                 })
                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {

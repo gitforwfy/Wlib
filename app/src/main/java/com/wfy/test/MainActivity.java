@@ -1,8 +1,10 @@
 package com.wfy.test;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -83,7 +85,13 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         if(requestCode==SCANNIN_REQUEST_CODE){
             if(resultCode==RESULT_OK){
                 String code=data.getStringExtra(CaptureActivity.SCAN_RESULT);
-                WToast.show(this,"result:"+code);
+                new AlertDialog.Builder(this)
+                        .setMessage("result:"+code)
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        }).show();
             }
         }
     }
