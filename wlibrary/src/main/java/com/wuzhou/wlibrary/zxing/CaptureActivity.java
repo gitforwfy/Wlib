@@ -66,7 +66,7 @@ public class CaptureActivity extends BaseActivity implements SurfaceHolder.Callb
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.capture_activity);
+        setContentView(R.layout.activity_capture);
         CameraManager.init(getApplication());
         viewfinderView = (ViewfinderView) findViewById(R.id.viewfinder_view);
         rl_scan_bar = (RelativeLayout) findViewById(R.id.rl_scan_bar);
