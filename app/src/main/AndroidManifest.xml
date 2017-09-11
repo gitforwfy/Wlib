@@ -45,7 +45,20 @@
         <activity android:name=".activity.EventActivity" />
         <activity android:name=".activity.DBActivity" />
         <activity android:name=".activity.HttpActivity" />
-        <activity android:name=".activity.ZipActivity"></activity>
+        <activity android:name=".activity.ZipActivity" />
+        <activity android:name=".activity.UpLoadActivity"></activity>
+
+        <!--<provider-->
+            <!--android:name="android.support.v4.content.FileProvider"-->
+            <!--android:authorities="com.wfy.test.MyFileProvider"-->
+            <!--android:exported="false"-->
+            <!--android:grantUriPermissions="true">-->
+            <!--<meta-data-->
+                <!--android:name="android.support.FILE_PROVIDER_PATHS"-->
+                <!--android:resource="@xml/filepaths">-->
+
+            <!--</meta-data>-->
+        <!--</provider>-->
     </application>
 
 </manifest>

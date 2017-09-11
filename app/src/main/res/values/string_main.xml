@@ -8,6 +8,7 @@
         <item>http</item>
         <item>zip</item>
         <item>二维码</item>
+        <item>图片选择上传</item>
     </string-array>
 
 </resources>
