@@ -2,4 +2,14 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="media_grid_size">48dp</dimen>
+    <dimen name="media_grid_spacing">4dp</dimen>
+
+    <dimen name="album_item_height">72dp</dimen>
+
+    <!--知乎-->
+    <dimen name="grid_expected_size">120dp</dimen>
+    <dimen name="item_margin_horizontal">24dp</dimen>
+    <dimen name="item_margin_vertical">8dp</dimen>
 </resources>
