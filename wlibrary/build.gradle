@@ -44,4 +44,6 @@ dependencies {
     //retrofit依赖RxJava
     compile 'com.squareup.retrofit2:adapter-rxjava:2.0.0'
     compile files('lib/zxing.jar')
+//    compile 'com.zhihu.android:matisse:0.4.3'
+
 }
