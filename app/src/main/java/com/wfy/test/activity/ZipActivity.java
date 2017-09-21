@@ -23,4 +23,9 @@ public class ZipActivity extends TitleActivity {
             }
         });
     }
+
+    @Override
+    protected void init(Bundle savedInstanceState) {
+
+    }
 }

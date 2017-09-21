@@ -3,19 +3,22 @@ package com.wuzhou.wlibrary.zxing;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.AssetFileDescriptor;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
@@ -59,24 +62,37 @@ public class CaptureActivity extends BaseActivity implements SurfaceHolder.Callb
     private static final float BEEP_VOLUME = 0.10f;
     private boolean vibrate;
 
-    private Button btn_scan_backward;
-    private RelativeLayout rl_scan_bar;
-    private ImageView imv_flight;
-
+//    private Button btn_scan_backward;
+//    private RelativeLayout rl_scan_bar;
+//    private ImageView imv_flight;
+    protected Toolbar toolbar;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_capture);
+
+        toolbar= (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+
+        actionBar.setDisplayShowTitleEnabled(false);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        Drawable navigationIcon = toolbar.getNavigationIcon();
+        TypedArray ta = getTheme().obtainStyledAttributes(new int[]{R.attr.album_element_color});
+        int color = ta.getColor(0, 0);
+        ta.recycle();
+        navigationIcon.setColorFilter(color, PorterDuff.Mode.SRC_IN);
+        toolbar.setTitle("扫一扫");
         CameraManager.init(getApplication());
         viewfinderView = (ViewfinderView) findViewById(R.id.viewfinder_view);
-        rl_scan_bar = (RelativeLayout) findViewById(R.id.rl_scan_bar);
-        btn_scan_backward = (Button) findViewById(R.id.btn_scan_backward);
-        imv_flight = (ImageView) findViewById(R.id.imv_flight);
+//        rl_scan_bar = (RelativeLayout) findViewById(R.id.rl_scan_bar);
+//        btn_scan_backward = (Button) findViewById(R.id.btn_scan_backward);
+//        imv_flight = (ImageView) findViewById(R.id.imv_flight);
         fitScreen();
         hasSurface = false;
         inactivityTimer = new InactivityTimer(this);
-        btn_scan_backward.setOnClickListener(this);
-        imv_flight.setOnClickListener(this);
+//        btn_scan_backward.setOnClickListener(this);
+//        imv_flight.setOnClickListener(this);
     }
 
     @Override
@@ -237,9 +253,10 @@ public class CaptureActivity extends BaseActivity implements SurfaceHolder.Callb
     @Override
     public void onClick(View v) {
         // TODO Auto-generated method stub
-        if(v.getId()==R.id.btn_scan_backward){
-            finish();
-        }else if(v.getId()==R.id.imv_flight){
+//        if(v.getId()==R.id.btn_scan_backward){
+//            finish();
+//        }else
+        if(v.getId()==R.id.imv_flight){
             if(!hasFlash()){
                 Toast.makeText(mActivity,"对不起，您的设备没有闪光灯",Toast.LENGTH_SHORT).show();
                 return;
@@ -277,5 +294,14 @@ public class CaptureActivity extends BaseActivity implements SurfaceHolder.Callb
         }
 
         return has;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

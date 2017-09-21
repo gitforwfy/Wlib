@@ -44,6 +44,11 @@ public class ImageLoaderActivity extends TitleActivity implements SwipeRefreshLa
         onRefresh();
     }
 
+    @Override
+    protected void init(Bundle savedInstanceState) {
+
+    }
+
     private int index=0;
     @Override
     public void onRefresh() {

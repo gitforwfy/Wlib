@@ -24,6 +24,11 @@ public class EventActivity extends TitleActivity {
     }
 
     @Override
+    protected void init(Bundle savedInstanceState) {
+
+    }
+
+    @Override
     protected void onStart() {
         super.onStart();
         EventManager.register(this);

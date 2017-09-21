@@ -15,25 +15,31 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
+
         <Button
+            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="get"
             android:text="get"
             />
+
         <Button
+            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="getUrl"
             android:text="getUrl"
             />
         <Button
+            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="post"
             android:text="post"
             />
         <Button
+            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="postUrl"
@@ -41,6 +47,7 @@
             />
 
         <Button
+            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="upLoad"

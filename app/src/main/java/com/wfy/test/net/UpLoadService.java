@@ -33,4 +33,9 @@ public interface UpLoadService {
     Call<String> uploadFiles(@PartMap Map<String, RequestBody> params,
                              @Part List<MultipartBody.Part> parts);
 
+    @POST("http://newwd.5zye.com:9700/webapi/wd/bookstore/getinfo.ashx")
+    //标记类 表示发送form-encoded的数据（适用于 有文件 上传的场景
+    @Multipart
+    Call<String> uploadFiles(@Part("action") String action, @Part("user_id") String user_id, @Part List<MultipartBody.Part> parts);
+
 }

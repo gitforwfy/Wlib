@@ -13,15 +13,14 @@ import com.wfy.test.activity.DBActivity;
 import com.wfy.test.activity.EventActivity;
 import com.wfy.test.activity.HttpActivity;
 import com.wfy.test.activity.ImageLoaderActivity;
-import com.wfy.test.activity.UpLoadActivity;
 import com.wfy.test.activity.ZipActivity;
-import com.wuzhou.wlibrary.page.BaseActivity;
+import com.wuzhou.wlibrary.page.TitleActivity;
 import com.wuzhou.wlibrary.widget.WToast;
 import com.wuzhou.wlibrary.zxing.CaptureActivity;
 
 import static com.wuzhou.wlibrary.zxing.CaptureActivity.SCANNIN_REQUEST_CODE;
 
-public class MainActivity extends BaseActivity implements AdapterView.OnItemClickListener {
+public class MainActivity extends TitleActivity implements AdapterView.OnItemClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +28,12 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         setContentView(R.layout.activity_main);
         ListView lv= (ListView) findViewById(R.id.lv);
         lv.setOnItemClickListener(this);
+    }
+
+    @Override
+    protected void init(Bundle savedInstanceState) {
+        setTitle("wlib");
+        setTopLeftButton(0,null);
     }
 
     @Override
@@ -58,10 +63,10 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
             case 5:
                 requestPermission(new String[]{Manifest.permission.CAMERA}, 0x0001);
                 break;
-            case 6:
-                intent.setClass(this, UpLoadActivity.class);
-                startActivity(intent);
-                break;
+//            case 6:
+//                intent.setClass(this, UpLoadActivity.class);
+//                startActivity(intent);
+//                break;
         }
     }
 

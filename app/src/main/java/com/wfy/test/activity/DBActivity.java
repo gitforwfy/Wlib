@@ -35,7 +35,6 @@ public class DBActivity extends TitleActivity implements SwipeRefreshLayout.OnRe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_db);
-        setTitle("数据库示例");
         etv_query = (EditText) findViewById(R.id.etv_query);
         etv_jobNum = (EditText) findViewById(R.id.etv_jobNum);
         etv_name= (EditText) findViewById(R.id.etv_name);
@@ -66,6 +65,23 @@ public class DBActivity extends TitleActivity implements SwipeRefreshLayout.OnRe
         adapter=new WorkAdapter(this,list,R.layout.item_worker);
         lv_worker.setAdapter(adapter);
         dao=new WorkDao(this);
+    }
+
+    @Override
+    protected void init(Bundle savedInstanceState) {
+        setTitle("数据库示例");
+        setTopRightButton("", R.mipmap.ic_launcher, new OnTopClickListener() {
+            @Override
+            public void onClick() {
+                Toast.makeText(mActivity,"我的",Toast.LENGTH_SHORT).show();
+            }
+        });
+        setTopLeftButton(R.mipmap.ic_launcher, new OnTopClickListener() {
+            @Override
+            public void onClick() {
+                finish();
+            }
+        });
     }
 
     public void add(View view) {

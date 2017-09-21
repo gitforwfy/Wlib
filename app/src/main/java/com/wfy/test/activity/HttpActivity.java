@@ -1,7 +1,6 @@
 package com.wfy.test.activity;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -27,6 +26,11 @@ public class HttpActivity extends TitleActivity {
         setTitle("网络请求示例");
         tv_http= (TextView) findViewById(R.id.tv_http);
         weatherService =RetrofitServiceManager.getInstance().create(WeatherService.class);
+
+    }
+
+    @Override
+    protected void init(Bundle savedInstanceState) {
 
     }
 
@@ -99,27 +103,9 @@ public class HttpActivity extends TitleActivity {
     }
 
     public void upLoad(View view) {
-        AlertDialog dialog=new AlertDialog.Builder(mActivity)
-                .setItems(new String[]{"拍照","从相册选择","取消","上传"}, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        switch (i) {
-                            case 0:
-
-                                break;
-                            case 1:
-                                break;
-                            case 2:
-                                break;
-                            case 3:
-                                break;
-
-                        }
-                        dialogInterface.dismiss();
-                    }
-                }).create();
-        dialog.show();
-
+        Intent intent=new Intent();
+        intent.setClass(this, UpLoadActivity.class);
+        startActivity(intent);
     }
 
 //    List<String> mImageList;

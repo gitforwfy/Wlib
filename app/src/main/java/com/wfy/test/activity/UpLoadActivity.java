@@ -1,7 +1,5 @@
 package com.wfy.test.activity;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -20,7 +18,6 @@ import com.wuzhou.wlibrary.imageloader.Image;
 import com.wuzhou.wlibrary.matisse.Matisse;
 import com.wuzhou.wlibrary.matisse.MimeType;
 import com.wuzhou.wlibrary.matisse.engine.impl.GlideEngine;
-import com.wuzhou.wlibrary.matisse.engine.impl.PicassoEngine;
 import com.wuzhou.wlibrary.matisse.filter.Filter;
 import com.wuzhou.wlibrary.matisse.filter.GifSizeFilter;
 import com.wuzhou.wlibrary.matisse.internal.entity.CaptureStrategy;
@@ -46,6 +43,7 @@ public class UpLoadActivity extends TitleActivity {
     TextView tv_upload;
     GridView gv_upload;
     UpLoadAdapter adapter;
+
     class UpLoadAdapter extends BaseAdapter{
 
         @Override
@@ -94,8 +92,37 @@ public class UpLoadActivity extends TitleActivity {
         gv_upload.setAdapter(adapter);
         weatherService = RetrofitServiceManager.getInstance().create(UpLoadService.class);
     }
+
+    @Override
+    protected void init(Bundle savedInstanceState) {
+
+    }
+
     private static final int REQUEST_CODE_CHOOSE = 23;
+    private static final int MaxSize = 9;
     public void add(View view) {
+        int i=MaxSize-result.size();
+        if(i<1){
+            WToast.show(mActivity,"已添加"+MaxSize+"张图片");
+        }else{
+            Matisse.from(mActivity)
+                    .choose(MimeType.ofImage(), false)
+                    .theme(R.style.Matisse_Zhihu)
+                    .countable(true)
+                    .capture(true)
+                    .showSingleMediaType(true)
+                    .captureStrategy(
+                            new CaptureStrategy(true, "com.wfy.test.MyFileProvider"))
+                    .maxSelectable(MaxSize-result.size())
+                    .addFilter(new GifSizeFilter(320, 320, 5 * Filter.K * Filter.K))
+                    .gridExpectedSize(
+                            getResources().getDimensionPixelSize(R.dimen.grid_expected_size))
+                    .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
+                    .thumbnailScale(0.85f)
+                    .imageEngine(new GlideEngine())
+                    .forResult(REQUEST_CODE_CHOOSE);
+        }
+        /**
         AlertDialog alertDialog=new AlertDialog.Builder(mActivity)
                 .setItems(new String[]{"拍照","从相册选择","取消"}, new DialogInterface.OnClickListener() {
                     @Override
@@ -135,6 +162,7 @@ public class UpLoadActivity extends TitleActivity {
                 })
                 .create();
         alertDialog.show();
+         */
     }
 
     public void upload(View view) {
@@ -173,7 +201,6 @@ public class UpLoadActivity extends TitleActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_CHOOSE && resultCode == RESULT_OK) {
 //            mAdapter.setData(Matisse.obtainResult(data), Matisse.obtainPathResult(data));
-            result.clear();
             result.addAll(Matisse.obtainPathResult(data));
             adapter.notifyDataSetChanged();
             WLog.printe(result.toString());
@@ -205,6 +232,36 @@ public class UpLoadActivity extends TitleActivity {
 
 
             Call<String> call= weatherService.uploadFiles(map,parts);
+            call.enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                    tv_upload.setText(response.body().toString());
+                }
+
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+                    tv_upload.setText(t.getMessage().toString());
+                }
+            });
+        }
+    }
+
+    public void uploadIII(View view) {
+
+        if(result.isEmpty()){
+            WToast.show(mActivity,"请选择图片！");
+        }else{
+            File file=new File(result.get(0).toString());
+            List<MultipartBody.Part> parts=new ArrayList<>();
+            for(String path:result){
+                File image_file=new File(path);
+                RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), image_file);
+                MultipartBody.Part part = MultipartBody.Part.
+                        createFormData("avatar", file.getName(), requestBody);
+                parts.add(part);
+            }
+
+            Call<String> call= weatherService.uploadFiles("action","362",parts);
             call.enqueue(new Callback<String>() {
                 @Override
                 public void onResponse(Call<String> call, Response<String> response) {

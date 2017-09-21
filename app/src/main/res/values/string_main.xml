@@ -4,11 +4,10 @@
     <string-array name="main">
         <item>ImageLoader</item>
         <item>EventBus</item>
-        <item>DB</item>
-        <item>http</item>
+        <item>数据库</item>
+        <item>网络请求/图片上传</item>
         <item>zip</item>
-        <item>二维码</item>
-        <item>图片选择上传</item>
+        <item>二维码/权限管理</item>
     </string-array>
 
 </resources>

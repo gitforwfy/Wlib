@@ -3,6 +3,7 @@ package com.wuzhou.wlibrary.page;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
@@ -29,6 +30,7 @@ public class BaseActivity extends AppCompatActivity {
     public FrameLayout f_content;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.Matisse_Zhihu);
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.activity_base);
         mActivity=this;
@@ -179,5 +181,22 @@ public class BaseActivity extends AppCompatActivity {
      */
     public void permissionFail(int requestCode) {
         Log.d(TAG, "获取权限失败=" + requestCode);
+    }
+
+    public String Version(){
+        String versionName;
+        int versionCode=1;
+        try {
+            PackageInfo pi= mActivity.getPackageManager().getPackageInfo(mActivity.getPackageName(), 0);
+            versionName= pi.versionName;
+            versionCode=pi.versionCode;
+        } catch (PackageManager.NameNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            versionName= "1.0.1";
+        }
+
+        String s="v"+versionName+"/"+versionCode;
+        return s;
     }
 }
