@@ -8,6 +8,7 @@
         <item>网络请求/图片上传</item>
         <item>zip</item>
         <item>二维码/权限管理</item>
+        <item>SD卡数据库测试</item>
     </string-array>
 
 </resources>

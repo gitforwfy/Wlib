@@ -10,8 +10,6 @@ import com.wfy.test.net.WeatherService;
 import com.wuzhou.wlibrary.http.RetrofitServiceManager;
 import com.wuzhou.wlibrary.page.TitleActivity;
 
-import java.util.ArrayList;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -108,20 +106,4 @@ public class HttpActivity extends TitleActivity {
         startActivity(intent);
     }
 
-//    List<String> mImageList;
-//
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        if(requestCode == 555) {
-//            if (resultCode == RESULT_OK) { // Successfully.
-//                // 不要再次质疑你的眼睛，还是这么简单。
-//                mImageList =  Album.parseResult(data);
-//            } else if (resultCode == RESULT_CANCELED) { // User canceled.
-//                // 用户取消了操作。
-//            }
-//        }
-//    }
-    private void refreshAdpater(ArrayList<String> paths){
-        // 处理返回照片地址
-    }
 }

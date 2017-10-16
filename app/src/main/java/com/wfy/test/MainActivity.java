@@ -13,6 +13,7 @@ import com.wfy.test.activity.DBActivity;
 import com.wfy.test.activity.EventActivity;
 import com.wfy.test.activity.HttpActivity;
 import com.wfy.test.activity.ImageLoaderActivity;
+import com.wfy.test.activity.SDBActivity;
 import com.wfy.test.activity.ZipActivity;
 import com.wuzhou.wlibrary.page.TitleActivity;
 import com.wuzhou.wlibrary.widget.WToast;
@@ -62,6 +63,10 @@ public class MainActivity extends TitleActivity implements AdapterView.OnItemCli
                 break;
             case 5:
                 requestPermission(new String[]{Manifest.permission.CAMERA}, 0x0001);
+                break;
+            case 6:
+                intent.setClass(this, SDBActivity.class);
+                startActivity(intent);
                 break;
 //            case 6:
 //                intent.setClass(this, UpLoadActivity.class);
