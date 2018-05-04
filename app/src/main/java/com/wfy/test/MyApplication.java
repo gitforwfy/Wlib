@@ -10,8 +10,6 @@ import com.wfy.test.bean.Student;
 import com.wfy.test.bean.Worker;
 import com.wuzhou.wlibrary.db.DatabaseHelper;
 import com.wuzhou.wlibrary.http.RetrofitServiceManager;
-import com.wuzhou.wlibrary.imageloader.Image;
-import com.wuzhou.wlibrary.imageloader.PicassoImageLoader;
 
 import java.sql.SQLException;
 
@@ -25,7 +23,7 @@ public class MyApplication extends Application{
     public void onCreate() {
         super.onCreate();
         //初始化图片缓存框架，传入你想要的图片缓存库
-        Image.init(new PicassoImageLoader());
+//        Image.init(new PicassoImageLoader());
 
 
         //初始化网络框架

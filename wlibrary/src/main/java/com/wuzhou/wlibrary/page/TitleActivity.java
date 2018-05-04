@@ -4,7 +4,6 @@ import android.content.res.TypedArray;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.LayoutRes;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -72,7 +71,7 @@ public abstract class TitleActivity extends BaseActivity {
     }
 
     @Override
-    public void setContentView(@LayoutRes int layoutResID) {
+    public void setContentView(int layoutResID) {
         t_content.removeAllViews();
         View.inflate(this,layoutResID,t_content);
         onContentChanged();

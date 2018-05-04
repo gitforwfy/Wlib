@@ -35,11 +35,6 @@
         <activity android:name="com.wuzhou.wlibrary.page.BaseFragmentActivity" />
         <activity android:name="com.wuzhou.wlibrary.page.TitleActivity" />
         <activity android:name="com.wuzhou.wlibrary.zxing.CaptureActivity" />
-
-        <activity android:name="com.wuzhou.wlibrary.matisse.ui.MatisseActivity"/>
-        <activity android:name="com.wuzhou.wlibrary.matisse.internal.ui.AlbumPreviewActivity"/>
-        <activity android:name="com.wuzhou.wlibrary.matisse.internal.ui.SelectedPreviewActivity"/>
-
     </application>
 
 </manifest>

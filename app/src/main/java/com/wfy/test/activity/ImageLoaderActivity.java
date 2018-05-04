@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.wfy.test.R;
-import com.wuzhou.wlibrary.imageloader.Image;
 import com.wuzhou.wlibrary.page.TitleActivity;
 
 import java.util.LinkedList;
@@ -108,7 +107,7 @@ public class ImageLoaderActivity extends TitleActivity implements SwipeRefreshLa
             }else{
                 holder= (ViewHolder) view.getTag();
             }
-            Image.displayImage(context,holder.imv,list.get(i));
+//            Image.displayImage(context,holder.imv,list.get(i));
             return view;
         }
 

@@ -26,7 +26,6 @@
         <item name="album.dropdown.count.color">@color/zhihu_album_dropdown_count_text</item>
         <item name="album.element.color">@android:color/white</item>
         <item name="album.thumbnail.placeholder">@color/zhihu_album_dropdown_thumbnail_placeholder</item>
-        <item name="album.emptyView">@drawable/ic_empty_zhihu</item>
         <item name="album.emptyView.textColor">@color/zhihu_album_empty_view</item>
         <item name="item.placeholder">@color/zhihu_item_placeholder</item>
         <item name="item.checkCircle.backgroundColor">@color/zhihu_item_checkCircle_backgroundColor</item>
@@ -50,7 +49,6 @@
     </style>
 
     //===================================== Theme Dracula ==========================================
-
     <style name="Matisse.Dracula" parent="Theme.AppCompat.NoActionBar">
         <item name="colorPrimary">@color/dracula_primary</item>
         <item name="colorPrimaryDark">@color/dracula_primary_dark</item>
@@ -59,7 +57,6 @@
         <item name="album.dropdown.count.color">@color/dracula_album_dropdown_count_text</item>
         <item name="album.element.color">@android:color/white</item>
         <item name="album.thumbnail.placeholder">@color/dracula_album_dropdown_thumbnail_placeholder</item>
-        <item name="album.emptyView">@drawable/ic_empty_dracula</item>
         <item name="album.emptyView.textColor">@color/dracula_album_empty_view</item>
         <item name="item.placeholder">@color/dracula_item_placeholder</item>
         <item name="item.checkCircle.backgroundColor">@color/dracula_item_checkCircle_backgroundColor</item>

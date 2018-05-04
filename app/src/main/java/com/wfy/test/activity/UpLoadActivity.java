@@ -1,7 +1,6 @@
 package com.wfy.test.activity;
 
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,13 +13,6 @@ import android.widget.TextView;
 import com.wfy.test.R;
 import com.wfy.test.net.UpLoadService;
 import com.wuzhou.wlibrary.http.RetrofitServiceManager;
-import com.wuzhou.wlibrary.imageloader.Image;
-import com.wuzhou.wlibrary.matisse.Matisse;
-import com.wuzhou.wlibrary.matisse.MimeType;
-import com.wuzhou.wlibrary.matisse.engine.impl.GlideEngine;
-import com.wuzhou.wlibrary.matisse.filter.Filter;
-import com.wuzhou.wlibrary.matisse.filter.GifSizeFilter;
-import com.wuzhou.wlibrary.matisse.internal.entity.CaptureStrategy;
 import com.wuzhou.wlibrary.page.TitleActivity;
 import com.wuzhou.wlibrary.utils.WLog;
 import com.wuzhou.wlibrary.widget.WToast;
@@ -72,7 +64,7 @@ public class UpLoadActivity extends TitleActivity {
             }else{
                 holder= (ViewHolder) view.getTag();
             }
-            Image.displayImage(mActivity,holder.imv_item_upload,result.get(i));
+//            Image.displayImage(mActivity,holder.imv_item_upload,result.get(i));
             return view;
         }
     }
@@ -105,22 +97,22 @@ public class UpLoadActivity extends TitleActivity {
         if(i<1){
             WToast.show(mActivity,"已添加"+MaxSize+"张图片");
         }else{
-            Matisse.from(mActivity)
-                    .choose(MimeType.ofImage(), false)
-                    .theme(R.style.Matisse_Zhihu)
-                    .countable(true)
-                    .capture(true)
-                    .showSingleMediaType(true)
-                    .captureStrategy(
-                            new CaptureStrategy(true, "com.wfy.test.MyFileProvider"))
-                    .maxSelectable(MaxSize-result.size())
-                    .addFilter(new GifSizeFilter(320, 320, 5 * Filter.K * Filter.K))
-                    .gridExpectedSize(
-                            getResources().getDimensionPixelSize(R.dimen.grid_expected_size))
-                    .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
-                    .thumbnailScale(0.85f)
-                    .imageEngine(new GlideEngine())
-                    .forResult(REQUEST_CODE_CHOOSE);
+//            Matisse.from(mActivity)
+//                    .choose(MimeType.ofImage(), false)
+//                    .theme(R.style.Matisse_Zhihu)
+//                    .countable(true)
+//                    .capture(true)
+//                    .showSingleMediaType(true)
+//                    .captureStrategy(
+//                            new CaptureStrategy(true, "com.wfy.test.MyFileProvider"))
+//                    .maxSelectable(MaxSize-result.size())
+//                    .addFilter(new GifSizeFilter(320, 320, 5 * Filter.K * Filter.K))
+//                    .gridExpectedSize(
+//                            getResources().getDimensionPixelSize(R.dimen.grid_expected_size))
+//                    .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
+//                    .thumbnailScale(0.85f)
+//                    .imageEngine(new GlideEngine())
+//                    .forResult(REQUEST_CODE_CHOOSE);
         }
         /**
         AlertDialog alertDialog=new AlertDialog.Builder(mActivity)
@@ -201,7 +193,7 @@ public class UpLoadActivity extends TitleActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_CHOOSE && resultCode == RESULT_OK) {
 //            mAdapter.setData(Matisse.obtainResult(data), Matisse.obtainPathResult(data));
-            result.addAll(Matisse.obtainPathResult(data));
+//            result.addAll(Matisse.obtainPathResult(data));
             adapter.notifyDataSetChanged();
             WLog.printe(result.toString());
         }
