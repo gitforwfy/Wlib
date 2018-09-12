@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.wfy.test">
+    package="com.photo.album">
 
     <!-- scanning -->
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -35,23 +35,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".LoadingActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".activity.ImageLoaderActivity" />
-        <activity android:name=".activity.EventActivity" />
         <activity android:name=".activity.DBActivity" />
-        <activity android:name=".activity.HttpActivity" />
         <activity android:name=".activity.ZipActivity" />
-        <activity android:name=".activity.UpLoadActivity" />
 
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.wfy.test.MyFileProvider"
+            android:authorities="com.photo.album.MyFileProvider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -59,7 +51,14 @@
                 android:resource="@xml/file_paths_public" />
         </provider>
 
-        <activity android:name=".activity.SDBActivity"></activity>
+        <activity android:name=".activity.SDBActivity" />
+        <activity android:name=".activity.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

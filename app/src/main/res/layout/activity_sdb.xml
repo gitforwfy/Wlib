@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.wfy.test.activity.SDBActivity">
+    tools:context="com.photo.album.activity.SDBActivity">
 
     <TextView
         android:id="@+id/tv_log"

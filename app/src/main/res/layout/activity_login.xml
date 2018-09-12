@@ -1,0 +1,35 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp" >
+
+    <!--定义输入用户名的文本编辑框  -->
+    <EditText
+        android:id="@+id/etv_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:hint="username"    />
+
+    <!--定义输入密码的文本编辑框  -->
+    <EditText
+        android:id="@+id/etv_pwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etv_user"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:hint="password"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etv_pwd"
+        android:layout_alignParentRight="true"
+        android:text="确定" />
+
+</RelativeLayout>

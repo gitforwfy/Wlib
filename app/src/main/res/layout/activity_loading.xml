@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.wfy.test.LoadingActivity">
+    tools:context="com.photo.album.LoadingActivity">
 
     <ImageView
         android:id="@+id/imv_icon"
