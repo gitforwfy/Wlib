@@ -11,8 +11,6 @@ import android.widget.ListView;
 
 import com.wfy.test.activity.DBActivity;
 import com.wfy.test.activity.EventActivity;
-import com.wfy.test.activity.HttpActivity;
-import com.wfy.test.activity.ImageLoaderActivity;
 import com.wfy.test.activity.SDBActivity;
 import com.wfy.test.activity.ZipActivity;
 import com.wuzhou.wlibrary.page.TitleActivity;
@@ -42,8 +40,8 @@ public class MainActivity extends TitleActivity implements AdapterView.OnItemCli
         Intent intent=new Intent();
         switch (i){
             case 0:
-                intent.setClass(this, ImageLoaderActivity.class);
-                startActivity(intent);
+//                intent.setClass(this, ImageLoaderActivity.class);
+//                startActivity(intent);
                 break;
             case 1:
                 intent.setClass(this, EventActivity.class);
@@ -54,8 +52,8 @@ public class MainActivity extends TitleActivity implements AdapterView.OnItemCli
                 startActivity(intent);
                 break;
             case 3:
-                intent.setClass(this, HttpActivity.class);
-                startActivity(intent);
+//                intent.setClass(this, HttpActivity.class);
+//                startActivity(intent);
                 break;
             case 4:
                 intent.setClass(this, ZipActivity.class);

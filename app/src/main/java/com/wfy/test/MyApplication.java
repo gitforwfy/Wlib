@@ -9,7 +9,6 @@ import com.wfy.test.bean.Profession;
 import com.wfy.test.bean.Student;
 import com.wfy.test.bean.Worker;
 import com.wuzhou.wlibrary.db.DatabaseHelper;
-import com.wuzhou.wlibrary.http.RetrofitServiceManager;
 
 import java.sql.SQLException;
 
@@ -22,14 +21,6 @@ public class MyApplication extends Application{
     @Override
     public void onCreate() {
         super.onCreate();
-        //初始化图片缓存框架，传入你想要的图片缓存库
-//        Image.init(new PicassoImageLoader());
-
-
-        //初始化网络框架
-        //相当于原来config中配置的ip
-        RetrofitServiceManager.init(this,"http://apicloud.mob.com/");
-
         //初始化数据库 数据库名字，版本号，并创建需要的表
         DatabaseHelper.setDbInfo("test", 1, new DatabaseHelper.OnCreateListener() {
             @Override
