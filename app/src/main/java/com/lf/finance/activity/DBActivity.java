@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.EditText;
@@ -13,7 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.photo.album.R;
+import com.photo.album.bean.HandlerModel;
 import com.photo.album.bean.Worker;
+import com.photo.album.db.HandlerModelDAO;
 import com.photo.album.db.WorkDao;
 import com.wuzhou.wlibrary.page.CommonAdapter;
 import com.wuzhou.wlibrary.page.TitleActivity;
@@ -24,6 +27,7 @@ import java.util.List;
 
 public class DBActivity extends TitleActivity implements SwipeRefreshLayout.OnRefreshListener {
     WorkDao dao;
+    HandlerModelDAO handlerModelDAO;
     EditText etv_query;
     EditText etv_jobNum;
     EditText etv_name;
@@ -65,6 +69,13 @@ public class DBActivity extends TitleActivity implements SwipeRefreshLayout.OnRe
         adapter=new WorkAdapter(this,list,R.layout.item_worker);
         lv_worker.setAdapter(adapter);
         dao=new WorkDao(this);
+        handlerModelDAO=new HandlerModelDAO(this, HandlerModel.class);
+
+        List<HandlerModel> list=handlerModelDAO.queryAll();
+        Log.e(TAG,"size = "+list.size());
+        for(HandlerModel handlerModel:list){
+            Log.e(TAG,handlerModel.toString());
+        }
     }
 
     @Override

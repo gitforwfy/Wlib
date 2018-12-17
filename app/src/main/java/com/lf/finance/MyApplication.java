@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+import com.photo.album.bean.HandlerModel;
 import com.photo.album.bean.Profession;
 import com.photo.album.bean.Student;
 import com.photo.album.bean.Worker;
@@ -33,6 +34,7 @@ public class MyApplication extends Application{
                 TableUtils.createTable(connectionSource, Worker.class);
                 TableUtils.createTable(connectionSource, Profession.class);
                 TableUtils.createTable(connectionSource, Student.class);
+                TableUtils.createTable(connectionSource, HandlerModel.class);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -44,6 +46,7 @@ public class MyApplication extends Application{
                 TableUtils.dropTable(connectionSource, Worker.class, true);
                 TableUtils.dropTable(connectionSource, Profession.class, true);
                 TableUtils.dropTable(connectionSource, Student.class, true);
+                TableUtils.dropTable(connectionSource, HandlerModel.class, true);
                 onCreate(database, connectionSource);
             } catch (SQLException e) {
                 e.printStackTrace();

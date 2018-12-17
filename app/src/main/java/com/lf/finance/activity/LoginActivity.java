@@ -1,6 +1,5 @@
 package com.photo.album.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,14 +19,10 @@ public class LoginActivity extends TitleActivity implements ILoginView{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-    }
-
-    @Override
-    protected void init(Bundle savedInstanceState) {
         etv_user= (EditText) findViewById(R.id.etv_user);
         etv_pwd= (EditText) findViewById(R.id.etv_pwd);
         btn_login= (Button) findViewById(R.id.btn_login);
-        loginPresenter = new LoginPresenter(this);
+
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -36,6 +31,11 @@ public class LoginActivity extends TitleActivity implements ILoginView{
                 loginPresenter.login(username,password);
             }
         });
+    }
+
+    @Override
+    protected void init(Bundle savedInstanceState) {
+        loginPresenter = new LoginPresenter(this);
     }
 
 
